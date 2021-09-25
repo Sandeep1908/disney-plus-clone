@@ -44,10 +44,11 @@ function Header() {
 export default Header;
 
 const Nav = styled.nav`
-  height: 50px;
+  height:70px;
   background: black;
   display: flex;
   align-items: center;
+  overflow-x:hidden;
 `;
 const Logo = styled.img`
   width: 55px;

@@ -52,6 +52,7 @@ const Nav = styled.nav`
 `;
 const Logo = styled.img`
   width: 55px;
+  margin-left:20px;
 `;
 const NavMenu = styled.div`
     display:flex;

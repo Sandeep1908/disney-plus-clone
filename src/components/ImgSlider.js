@@ -59,7 +59,7 @@ const Caresoul=styled(Slider)`
     }
 `
 const Wrap=styled(Slider)`
-    heigth:300px;
+    
     img{
         border:4px solid transparent;
         border-radius:10px;

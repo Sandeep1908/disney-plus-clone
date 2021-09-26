@@ -42,7 +42,7 @@ function Detail() {
       Animation .English .2018 .U
       </Subtitle>
       <Discription>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A eaque nemo officiis itaque minus, ullam iste nihil blanditiis enim deserunt expedita, iure non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nostrum rem voluptatum quam voluptate! Mollitia molestias, fuga ad facere officia aspernatur nostrum ea?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A eaque nemo officiis itaque minus, ullam iste nihil blanditiis enim deserunt expedita Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, rem.
       </Discription>
     </Container>
   );
@@ -157,5 +157,7 @@ const Discription=styled.div`
     color:rgB(249,249,249);
     font-size:20px;
     line-height:1.9;
+    max-width:700px;
+    
 
 `

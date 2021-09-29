@@ -12,6 +12,7 @@ import {useDispatch} from 'react-redux';
 
 function Home() {
     const dispatch=useDispatch();
+    
     useEffect(()=>{
         onSnapshot(collection(db,'movies'),(snap)=>{
             const temp=snap.docs.map((doc)=>{

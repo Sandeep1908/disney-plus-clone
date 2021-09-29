@@ -11,7 +11,7 @@ function Movies() {
             <Content>
                 {movie &&
                  movie.map(curr=>{
-                return <Link to={`/detail:${curr.id}`}> 
+                return <Link to={`/detail:${curr.id}`} key={curr.id}> 
                         <Wrap>
                             <img src={curr.backgroundImg} alt="" />
                         </Wrap>

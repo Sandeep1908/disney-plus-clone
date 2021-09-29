@@ -1,28 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
+import {selectMovie} from '../features/movieSlice/movie'
+import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 function Movies() {
+    const movie=useSelector(selectMovie)
     return (
         <Container>
             <h2>Recommended for You</h2>
             <Content>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://cdn.britannica.com/19/187419-050-94D978BD/Mark-Hamill-Luke-Skywalker-Yoda-Irvin-Kershner.jpg" alt="" />
-                </Wrap>
+                {movie &&
+                 movie.map(curr=>{
+                return <Link to={`/detail:${curr.id}`}> 
+                        <Wrap>
+                            <img src={curr.backgroundImg} alt="" />
+                        </Wrap>
+                         </Link>
+                  
+                }) 
+                }
+               
+               
             </Content>
         </Container>
     )
@@ -37,10 +35,12 @@ const Content=styled.div`
 padding:15px 0 15px;
 display:grid;
 grid-gap:25px;
-grid-template-columns:repeat(4,minmax(0,1fr));
+grid-template-columns:repeat(5,minmax(0,1fr));
 `
 const Wrap=styled.div`
     border:3px solid rgba(249,249,249,.1);
+    width:300px;
+    height:200px;
     border-radius:10px;
     overflow:hidden;
     box-shadow:rgb(0 0 0 / 69%) 0px 26px 30px -10px,

@@ -1,15 +1,38 @@
-import React from "react";
+import React,{useEffect, useState} from 'react';
 import styled from "styled-components";
-
+import { useParams } from "react-router-dom";
+import db from '../firebase';
+import { onSnapshot ,collection} from '@firebase/firestore';
 function Detail() {
+
+  const {id} = useParams();
+  const [moive,setMovie]=useState("");
+  useEffect(()=>{
+    onSnapshot(collection(db,'movies'),(snap)=>{
+       snap.docs.map(cur=>{
+          if(cur.id===id)
+          {
+            setMovie(cur.data());
+          }
+        })      
+    })
+},[])
+
+  console.log(moive);
+
   return (
     <Container>
-      <BackgroundImg>
-        <img
-          src="https://cdn.vox-cdn.com/thumbor/wJ71E7nJ_4Wj0btm5seEnHNJ4Xk=/0x0:4096x2304/1200x800/filters:focal(1973x1175:2627x1829)/cdn.vox-cdn.com/uploads/chorus_image/image/60190709/BO_RGB_s120_22a_cs_pub.pub16.318.0.jpg"
-          alt=""
-        />
-      </BackgroundImg>
+    
+         {
+
+           moive && 
+            <BackgroundImg>
+              <img src={moive.backgroundImg} />
+            </BackgroundImg>
+
+          } 
+          
+        
 
       <ImgLogo>
         <img
@@ -20,29 +43,29 @@ function Detail() {
 
       <Content>
         <PlayButton>
-            <img src="../images/play-icon-black.png" alt="" />
-            <span>PLAY</span>
+          <img src="../images/play-icon-black.png" alt="" />
+          <span>PLAY</span>
         </PlayButton>
 
         <TrailorButton>
-
-        <img src="../images/play-icon-white.png" alt="" />
-            <span>Trailor</span>
+          <img src="../images/play-icon-white.png" alt="" />
+          <span>Trailor</span>
         </TrailorButton>
 
         <AddButton>
-            <span>+</span>
+          <span>+</span>
         </AddButton>
 
         <GroupButton>
-            <img src="../images/group-icon.png" alt="" />
+          <img src="../images/group-icon.png" alt="" />
         </GroupButton>
       </Content>
-      <Subtitle>
-      Animation .English .2018 .U
-      </Subtitle>
+      <Subtitle>Animation .English .2018 .U</Subtitle>
       <Discription>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A eaque nemo officiis itaque minus, ullam iste nihil blanditiis enim deserunt expedita Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, rem.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. A eaque nemo
+        officiis itaque minus, ullam iste nihil blanditiis enim deserunt
+        expedita Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
+        rem.
       </Discription>
     </Container>
   );
@@ -81,83 +104,71 @@ const ImgLogo = styled.div`
   }
 `;
 const Content = styled.div`
-    padding: 20px;
-    display:flex;
+  padding: 20px;
+  display: flex;
 `;
 
 const PlayButton = styled.button`
-
-        padding:0 12px;
-        cursor:pointer;
-        margin-right:12px;
-        display:flex;
-        align-items:center;
-        border-radius:4px;
-        border:none;
-        background:rgba(249,249,249);
-        span{
-            font-size:12px;
-            letter-spacing:6px;
-            
-        }
-        &:hover{
-            background:rgba(200,200,200)
-        }
-
-
+  padding: 0 12px;
+  cursor: pointer;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  background: rgba(249, 249, 249);
+  span {
+    font-size: 12px;
+    letter-spacing: 6px;
+  }
+  &:hover {
+    background: rgba(200, 200, 200);
+  }
 `;
 const TrailorButton = styled(PlayButton)`
-        background:rgba(0,0,0,.4);
-        color:white;
-        border:2px solid white;
-        span{
-
-            text-transform:uppercase;
-        }
-
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 2px solid white;
+  span {
+    text-transform: uppercase;
+  }
 `;
 const AddButton = styled.button`
-        width:44px;
-        height:44px;
-        background:rgba(0,0,0,.3);
-        border-radius:50%;
-        border:1px solid white;
-        cursor:pointer;
-        margin-right:12px;
-        span{
-            font-size:24px;
-            color:white;
-        }
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+  margin-right: 12px;
+  span {
+    font-size: 24px;
+    color: white;
+  }
 
-        &:hover{
-            background:rgba(0,0,0,9);
-        }
-        
-        `;
-        const GroupButton = styled(AddButton)`
-        background:rgba(0,0,0,.9);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        img{
-            
-        }
-        
+  &:hover {
+    background: rgba(0, 0, 0, 9);
+  }
+`;
+const GroupButton = styled(AddButton)`
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+  }
 `;
 
-const Subtitle=styled.div`
-    padding:0 20px;
-    color:rgB(249,249,249);
-    font-size:15px;
-    min-height:30px;
-
-`
-const Discription=styled.div`
-    padding:0 20px;
-    color:rgB(249,249,249);
-    font-size:20px;
-    line-height:1.9;
-    max-width:700px;
-    
-
-`
+const Subtitle = styled.div`
+  padding: 0 20px;
+  color: rgB(249, 249, 249);
+  font-size: 15px;
+  min-height: 30px;
+`;
+const Discription = styled.div`
+  padding: 0 20px;
+  color: rgB(249, 249, 249);
+  font-size: 20px;
+  line-height: 1.9;
+  max-width: 700px;
+`;

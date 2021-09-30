@@ -5,13 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { userSignIn, userSignOut } from "../features/user/userSlice";
 import {auth,provider} from '../firebase';
 import { signInWithPopup } from "firebase/auth";
-import {useHistory} from 'react-router-dom';
-
 function Header() {
+  const dispatch=useDispatch();
   const username = useSelector(selectUserName);
   const photo=useSelector(selectUserPhoto);
-  const dispatch=useDispatch();
-  const history=useHistory();
+ 
+
   useEffect(()=>{
     auth.onAuthStateChanged(async user=>{
       if(user){
@@ -28,15 +27,13 @@ function Header() {
   const signInuser=()=>{
     try{
     signInWithPopup(auth,provider).then(res=>{
-      console.log(res.user.photoURL)
       dispatch(userSignIn({
         name:res.user.displayName,
         email:res.user.email,
         photo:res.user.photoURL
-        
       }))
     }).catch(error=>{
-      console.log(error)
+      
     })
   }
   catch{

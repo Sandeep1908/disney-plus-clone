@@ -35,7 +35,7 @@ const Content=styled.div`
 padding:15px 0 15px;
 display:grid;
 grid-gap:25px;
-grid-template-columns:repeat(5,minmax(0,1fr));
+grid-template-columns:repeat(4,minmax(0,1fr));
 `
 const Wrap=styled.div`
     border:3px solid rgba(249,249,249,.1);

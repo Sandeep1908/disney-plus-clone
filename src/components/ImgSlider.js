@@ -13,16 +13,16 @@ function ImgSlider() {
     return (
         <Caresoul  {...settings}>
             <Wrap>
-                <img src="../images/slider-badag.jpg" alt="" />
+                <img src="../images/pic1.jpg" alt="" />
             </Wrap>
             <Wrap>
-                <img src="../images/slider-badging.jpg" alt="" />
+                <img src="../images/pic2jpg.jpg" alt="" />
             </Wrap>
             <Wrap>
-                <img src="../images/slider-scale.jpg" alt="" />
+                <img src="../images/pic3.jpeg" alt="" />
             </Wrap>
             <Wrap>
-                <img src="../images/slider-scales.jpg" alt="" />
+                <img src="../images/pic4.jpg" alt="" />
             </Wrap>
         </Caresoul>
     )
@@ -63,8 +63,7 @@ const Wrap=styled(Slider)`
     img{
         border:4px solid transparent;
         border-radius:10px;
-        width:100%;
-        height:290px;
+        height:50vh;
         box-shadow:rgb(0 0 0 / 69%) 0px 26px 30px -10px,
         rgb(0 0 0 / 73%) 0px 16px 10px -10px;
         transition:300ms;

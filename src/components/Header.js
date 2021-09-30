@@ -32,6 +32,7 @@ function Header() {
         email:res.user.email,
         photo:res.user.photoURL
       }))
+      
     }).catch(error=>{
       
     })
